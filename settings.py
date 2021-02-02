@@ -8,10 +8,10 @@ SESSION_CONFIGS = [
     #    app_sequence=['public_goods', 'payment_info']
     # ),
     {
-         'name': 'two_dim_experiment',
+         'name': 'two_dim_treatment',
          'display_name': 'Nonlinear wage experiment',
          'num_demo_participants': 1,
-         'app_sequence': ['two_dim_experiment'],
+         'app_sequence': ['two_dim_treatment'],
      },
 ]
 
