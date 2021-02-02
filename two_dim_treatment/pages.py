@@ -33,18 +33,41 @@ class ContractDecision(Page):
 
 
 
-class ResultsWaitPage(WaitPage):
-	pass
+#class ResultsWaitPage(WaitPage):
+#	wait_for_all_groups = False
+	#after_all_players_arrive = 'set_payoffs'
+	#def before_next_page(self):
+	#	if self.player.subsession.round_number == Constants.num_rounds:
+	#		self.player.set_final_contract()
+
 	#def after_all_players_arrive(group):
 		#p = group.get_players()
 		#p.get_wages()
 
+class PreResults(Page):
+	template_name ='two_dim_treatment/PreResults.html'	
 
-class Results(Page):
 	def is_displayed(self):
 		return self.player.subsession.round_number == Constants.num_rounds
 
+	def before_next_page(self):
+		if self.player.subsession.round_number == Constants.num_rounds:
+			self.player.set_final_contract()
+
+class Results(Page):
+	template_name ='two_dim_treatment/Results.html'	
+	
+	def is_displayed(self):
+		return self.player.subsession.round_number == Constants.num_rounds
+
+	def vars_for_template(self):
+		return {
+				'period': self.player.paying_round,
+				'wage': self.player.final_wage,
+				'tasks': self.player.final_task
+			}
 
 
 
-page_sequence = [ContractDecision, ResultsWaitPage, Results]
+
+page_sequence = [ContractDecision, PreResults, Results]

@@ -2,12 +2,36 @@
 {% load otree static %}
 
 {% block title %}
-    Page title
+    Contract Choice
 {% endblock %}
 
 {% block content %}
+<table class="table">
+	<tr>
+		<td> The period <b>{{ period }}</b> has been chosen for payment is </td>
+		<td> </td>
 
-    {% next_button %}
+	</tr>
+	<tr>
+		<td> You chose to complete <b>{{ tasks }}</b> tasks </td>
+		<td> </td>
+
+	</tr>
+	<tr>
+		<td> Receiving <b>{{ wage }}</b> for these tasks </td>
+		<td> </td>
+
+	</tr>
+	<tr>
+		<td> </td>
+		<td> {% next_button %} </td>
+	</tr>
+</table>
+
+
+
+
+    
 {% endblock %}
 
 

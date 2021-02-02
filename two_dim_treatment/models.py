@@ -23,7 +23,7 @@ This is the treatment for two dimensional treatment of the qlt experiment, where
 class Constants(BaseConstants):
     name_in_url = 'two_dim_treatment'
     players_per_group = None
-    num_rounds = 6
+    num_rounds = 2
 
     # maximum number of tasks:
     num_tasks = 6
@@ -53,11 +53,25 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
-    pass
+    def set_payoffs(group):
+        for p in group.get_players():
+            p.set_final_contract()
 
 
 class Player(BasePlayer):
     choice = models.IntegerField(min=1,max=Constants.num_tasks)
+
+    # variables determining the final contract
+    paying_round = models.IntegerField(min=1,max=Constants.num_rounds)
+    final_wage = models.FloatField(max_digits=5, decimal_places=1, default=0)
+    final_task = models.IntegerField(min=1,max=Constants.num_tasks)
+
+    def set_final_contract(self):
+        self.paying_round = random.randint(1,Constants.num_rounds)
+        p = self.in_round(self.paying_round)
+        self.final_task = p.choice
+        self.final_wage = Constants.wages[self.paying_round-1][p.choice-1]
+
 
 
 
