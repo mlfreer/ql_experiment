@@ -7,6 +7,12 @@ SESSION_CONFIGS = [
     #    num_demo_participants=3,
     #    app_sequence=['public_goods', 'payment_info']
     # ),
+    {
+         'name': 'two_dim_experiment',
+         'display_name': 'Nonlinear wage experiment',
+         'num_demo_participants': 1,
+         'app_sequence': ['two_dim_experiment'],
+     },
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
