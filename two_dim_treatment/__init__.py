@@ -12,7 +12,7 @@ import random
 author = 'Mikhail Freer'
 
 doc = """
-This is the treatment for two dimensional treatment of the qlt experiment, where subjects make decisions on the non-linear contracts.
+This is the code for two dimensional treatment of the qlt experiment, where subjects make decisions on the non-linear contracts.
 """
 
 
@@ -109,7 +109,36 @@ class DataItem(ExtraModel):
 
 
 
+#--------------------------
+# starting the pages part:
+#--------------------------
+class WelcomePage(Page):
+    import random
+    #@staticmethod
+    #template_name ='two_dim_treatment/WelcomePage.html'
+    #form_model='dataItem'
+    #form_fields = ['value']
+    def vars_for_template(player: Player):
+        i=random.randint(3,12)
+        return dict(
+        image_path='ql_experiment/{}.png'.format(i)
+    )
+    #    player.create_data_inputs()
+    #    temp = {}
+    #    for r in range(1,10):
+    #        key1 = "a"+str(r)
+    #        for j in range (1,10):
+    #            key = key1+str(j)
+    #            print(key)
+    #            for t in DataItem.filter(player=player,row=r,column=j):
+    #                temp[key] = t.value
+    #                
+    #    return temp
 
+    def is_displayed(player: Player):
+        return player.subsession.round_number == 1
+    #def before_next_page(self):
+    #   self.player.create_data_inputs()
 
 class ContractDecision(Page):
     template_name ='two_dim_treatment/ContractDecision.html'
@@ -134,36 +163,6 @@ class ContractDecision(Page):
                 'w5': w5,
                 'w6': w6
             }
-
-
-class WelcomePage(Page):
-    import random
-    #@staticmethod
-    #template_name ='two_dim_treatment/WelcomePage.html'
-    #form_model='dataItem'
-    #form_fields = ['value']
-    def vars_for_template(player: Player):
-        i=random.randint(3,5)
-        return dict(
-        image_path='ql_experiment/{}.png'.format(i)
-    )
-    #    player.create_data_inputs()
-    #    temp = {}
-    #    for r in range(1,10):
-    #        key1 = "a"+str(r)
-    #        for j in range (1,10):
-    #            key = key1+str(j)
-    #            print(key)
-    #            for t in DataItem.filter(player=player,row=r,column=j):
-    #                temp[key] = t.value
-    #                
-    #    return temp
-
-    def is_displayed(player: Player):
-        return player.subsession.round_number == 1
-    #def before_next_page(self):
-    #   self.player.create_data_inputs()
-
 
 class PreResults(Page):
     template_name ='two_dim_treatment/PreResults.html'  

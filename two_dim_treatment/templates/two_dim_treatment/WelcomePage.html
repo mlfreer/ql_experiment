@@ -45,6 +45,11 @@
             height: 100%;
             margin: auto;
         }
+.fit-right {
+	right: 0%;
+	margin: auto;
+	transform: translate(50%, 0%);
+}
 
 .table_centered {
   width: 50%;
@@ -76,13 +81,12 @@
 		{% endfor %}
 	</tr>
 	{% endfor %}
-	<tr>
-		{% for j in range(1,3)%}
-		<td> </td>
-		{% endfor %}
-		<td>{% next_button %}</td>
-	</tr>
+	
+		
 </table>
+<br>
+
+<div class="fit-right">{% next_button %}</div>
 </div>
 
 
