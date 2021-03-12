@@ -137,11 +137,16 @@ class ContractDecision(Page):
 
 
 class WelcomePage(Page):
+    import random
     #@staticmethod
     #template_name ='two_dim_treatment/WelcomePage.html'
     #form_model='dataItem'
     #form_fields = ['value']
-    #def vars_for_template(player: Player):
+    def vars_for_template(player: Player):
+        i=random.randint(3,5)
+        return dict(
+        image_path='ql_experiment/{}.png'.format(i)
+    )
     #    player.create_data_inputs()
     #    temp = {}
     #    for r in range(1,10):
