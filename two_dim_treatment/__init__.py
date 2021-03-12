@@ -30,7 +30,7 @@ class Constants(BaseConstants):
     # number of budgets
     number_of_budgets=3
 
-
+    prohibited_numbers = [13,19,27,39]
     # maximum number of tasks:
     num_tasks = 6
 
@@ -119,7 +119,16 @@ class WelcomePage(Page):
     #form_model='dataItem'
     #form_fields = ['value']
     def vars_for_template(player: Player):
-        i=random.randint(3,12)
+        i=random.randint(3,40)
+        flag=True
+        while flag:
+            flag=False
+            for j in Constants.prohibited_numbers:
+                if i==j:
+                    flag=True
+            if flag:
+                i=random.randint(3,40)
+
         return dict(
         image_path='ql_experiment/{}.png'.format(i)
     )
