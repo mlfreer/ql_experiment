@@ -1,0 +1,145 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Please complete practice task
+{% endblock %}
+
+{% block content %}
+ 
+<div class="split-left center-fit">
+	<img src="{% static image_path %}" height="80%"/>
+</div>
+
+
+<div class="split-right ">
+	<div id="errors">
+	</div>
+<table class="table">
+	{% for i in rows %}
+	<tr>
+		<td>
+			{{i}}
+		</td>
+		{% for j in columns %}
+		<td> 
+		<input type="number" id="a_{{i}}_{{j}}" name="a_{{i}}_{{j}}" min="0" max="1000000000", value =0> 
+		</td>
+		{% endfor %}
+	</tr>
+	{% endfor %}
+	<tr>
+		<td>
+			<button type="button" class="btn btn-primary" id="btn-bid" onclick="SendValues(this)"> 
+			Submit
+			</button>
+		</td>
+
+		<td>
+		</td>
+		<td></td>
+		<td>
+			<div class="fit-right" id="next_button">
+		{% next_button %}
+		</div>
+		</td>
+	</tr>	
+</table></div>
+</div>
+
+{% endblock %}
+
+
+<style>
+.table{
+    table-layout: fixed;
+    width: 500px;
+}
+
+.split-left {
+  height: 100%;
+  width: 60%;
+  position: absolute;
+  z-index: 1;
+  top: 15%;
+  left: 0;
+  overflow-x: hidden;
+  background-color: white;
+}
+
+.split-right {
+  height: 90%;
+  width: 40%;
+  position: absolute;
+  z-index: 1;
+  top: 15%;
+  right: 0;
+  overflow-x: hidden;
+  background-color: white;
+  transform: translate(-10%,0%);
+}
+
+.center-fit {
+            height: 100%;
+            margin: auto;
+            transform: translate(25%, 0%);
+        }
+
+</style>
+
+
+
+{% block scripts %}
+<script>
+  var submitted = 0
+  liveSend({submitted: submitted})
+
+  var x = document.getElementById("next_button");
+  x.style.visibility = "hidden";
+  
+  function SendValues(btn) {
+        temp = {}
+    {% for i in rows %}
+      {% for j in columns %}
+          //console.log(document.getElementById("a_{{i}}_{{j}}").value)
+          //liveSend({
+            temp.a_{{i}}_{{j}}=document.getElementById("a_{{i}}_{{j}}").value;
+          //})
+        {% endfor %}
+    {% endfor %}
+    temp.submitted = 1;
+    liveSend(temp)
+    
+    //submitted=1
+    //liveSend({submitted: 1})
+    
+  };
+
+  var errors = document.getElementById("errors")
+
+  function liveRecv(data) {
+  	errors.innerHTML = ""
+    console.log('received a message!', data);
+    if (data[0]===true){
+      var x = document.getElementById("next_button");
+      x.style.visibility = "visible";
+      console.log('make it visible');
+    }
+    else
+    {
+      var x = document.getElementById("next_button");
+      x.style.visibility = "hidden";
+      console.log('make it hidden');
+    }
+    {% for i in rows %}
+    if (data[{{i}}]===true){
+    	errors.innerHTML += '<div class="alert alert-danger" role="alert"> Error Detetected! Check line {{i}} </div>'
+    }
+    {% endfor %}
+
+    // your code goes here
+}
+
+
+</script>
+{% endblock %}

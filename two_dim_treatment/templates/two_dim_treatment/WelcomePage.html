@@ -1,11 +1,13 @@
 {% extends "global/Page.html" %}
+{% laod otree %}
 {% load otree static %}
+
 
 {% block title %}
     Welcome to the Experiment
 {% endblock %}
 
-{% block content %}
+{% block styles %}
 
 
 <style>
@@ -72,11 +74,11 @@
 
 <div class="split right">
 <table class="table_centered table">
-	{% for i in range(1,27) %}
+	{% for i in range(1,3) %}
 	<tr>
-		{% for j in range(1,4) %}
+		{% for j in range(1,3) %}
 		<td> 
-		<input type="number" id="a_{{i}}_{{j}}" name="a_{{i}}_{{j}}" min="0" max="1000000000"> 
+		<input type="number" id="a_{{i}}_{{j}}" name="a_{{i}}_{{j}}" min="0" max="1000000000" value=100> 
 		</td>
 		{% endfor %}
 	</tr>
@@ -90,11 +92,10 @@
 </div>
 
 
-
-
 <script>
-
+	liveSend(99);
 </script>
+
 
 {% endblock %}
 

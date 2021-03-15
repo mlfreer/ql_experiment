@@ -1,0 +1,27 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load static %}
+{% load static 'ql_experiment/custom.css' %}
+
+
+
+{% block title %}
+    Welcome to the Experiment
+{% endblock %}
+
+{% block content %}
+Instructions come here...
+
+<div class="fit-right"> {% next_button %} </div>
+
+{% endblock %}
+
+
+<style>
+  .fit-right {
+  right: 0%;
+  margin: auto;
+  transform: translate(90%, 0%);
+}
+
+</style>

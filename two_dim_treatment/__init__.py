@@ -114,10 +114,10 @@ class DataItem(ExtraModel):
 #--------------------------
 class WelcomePage(Page):
     import random
-    #@staticmethod
-    #template_name ='two_dim_treatment/WelcomePage.html'
-    #form_model='dataItem'
-    #form_fields = ['value']
+    @staticmethod
+    def live_method(player: Player, data):
+        return print('data received', data)
+    
     def vars_for_template(player: Player):
         i=random.randint(3,40)
         flag=True
@@ -132,17 +132,7 @@ class WelcomePage(Page):
         return dict(
         image_path='ql_experiment/{}.png'.format(i)
     )
-    #    player.create_data_inputs()
-    #    temp = {}
-    #    for r in range(1,10):
-    #        key1 = "a"+str(r)
-    #        for j in range (1,10):
-    #            key = key1+str(j)
-    #            print(key)
-    #            for t in DataItem.filter(player=player,row=r,column=j):
-    #                temp[key] = t.value
-    #                
-    #    return temp
+ 
 
     def is_displayed(player: Player):
         return player.subsession.round_number == 1

@@ -11,7 +11,7 @@ SESSION_CONFIGS = [
          'name': 'two_dim_treatment',
          'display_name': 'Nonlinear wage experiment',
          'num_demo_participants': 1,
-         'app_sequence': ['two_dim_treatment'],
+         'app_sequence': ['no_self'],
      },
 ]
 
