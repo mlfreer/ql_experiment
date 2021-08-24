@@ -30,7 +30,6 @@ class Constants(BaseConstants):
     # number of budgets
     number_of_budgets=3
 
-    prohibited_numbers = [13,19,27,39]
     # maximum number of tasks:
     num_tasks = 6
 
@@ -46,7 +45,7 @@ class Constants(BaseConstants):
     wages[4] = [5.02, 7.01, 8.40, 9.40, 10.18, 10.78]
     wages[5] = [5.19, 7.10, 8.35, 9.25, 9.96, 10.41]
 
-    temp_wage = wages[1][2]
+ #   temp_wage = wages[1][2]
 
 
 
@@ -96,8 +95,8 @@ def custom_export(players):
 
 class DataItem(ExtraModel):
     player = models.Link(Player)
-    row = models.IntegerField(min=1,max=10,default=1)
-    column = models.IntegerField(min=1,max=10,default=1)
+    row = models.IntegerField(min=1,max=13,default=1)
+    column = models.IntegerField(min=1,max=12,default=1)
     budget_number = models.IntegerField(min=1,max=Constants.number_of_budgets)
     value = models.IntegerField(min=0,default=0)
 
@@ -114,18 +113,18 @@ class WelcomePage(Page):
         return print('data received', data)
     
     def vars_for_template(player: Player):
-        i=random.randint(3,40)
-        flag=True
-        while flag:
-            flag=False
-            for j in Constants.prohibited_numbers:
-                if i==j:
-                    flag=True
-            if flag:
-                i=random.randint(3,40)
-
+        i=random.randint(1,21)
+#        flag=True
+#        while flag:
+#            flag=False
+#            for j in Constants.prohibited_numbers:
+#                if i==j:
+#                    flag=True
+#            if flag:
+#                i=random.randint(1,21)
+        print(i)
         return dict(
-        image_path='ql_experiment/{}.png'.format(i)
+        image_path='ql_experiment/{}.jpg'.format(i)
     )
  
 
