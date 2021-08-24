@@ -202,8 +202,8 @@ class PracticeTask(Page):
     def vars_for_template(player: Player): 
         return dict(
         image_path='ql_experiment/{}.jpg'.format(player.page_number),
-        rows = range(1,player.num_of_rows+1),
-        columns = range(1,player.num_of_columns+1)
+        rows = range(1,8+1),#player.num_of_rows+1),
+        columns = range(1,12+1),#player.num_of_columns+1)
     )
 
    

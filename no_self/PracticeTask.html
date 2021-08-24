@@ -7,12 +7,12 @@ Please complete practice task
 
 {% block content %}
  
-<div class="split-left center-fit">
-	<img src="{% static image_path %}" height="80%"/>
+<div class="split-top center-fit">
+	<img src="{% static image_path %}" height="50%"/>
 </div>
 
 
-<div class="split-right ">
+<div class="split-bottom">
 	<div id="errors">
 	</div>
 <table class="table">
@@ -29,15 +29,20 @@ Please complete practice task
 	</tr>
 	{% endfor %}
 	<tr>
-		<td>
+    <td>
 			<button type="button" class="btn btn-primary" id="btn-bid" onclick="SendValues(this)"> 
 			Submit
 			</button>
 		</td>
 
-		<td>
-		</td>
-		<td></td>
+		<td>		</td>
+		<td>    </td>
+    <td>    </td>
+    <td>    </td>
+    <td>    </td>
+    <td>    </td>
+    <td>    </td>
+
 		<td>
 			<div class="fit-right" id="next_button">
 		{% next_button %}
@@ -53,8 +58,31 @@ Please complete practice task
 <style>
 .table{
     table-layout: fixed;
-    width: 500px;
+    width: 70;
 }
+
+.split-top {
+  height: 50%;
+  width: 90%;
+  position: absolute;
+  z-index: 1;
+  top: 12%;
+  left: 10%;
+  overflow-x: hidden;
+  background-color: none;
+}
+
+.split-bottom {
+  height: 38%;
+  width: 90%;
+  position: absolute;
+  z-index: 1;
+  bottom: 0%;
+  left: 5%;
+  overflow-x: hidden;
+  background-color: none;
+}
+
 
 .split-left {
   height: 100%;
@@ -82,7 +110,7 @@ Please complete practice task
 .center-fit {
             height: 100%;
             margin: auto;
-            transform: translate(25%, 0%);
+            transform: translate(15%, 0%);
         }
 
 </style>

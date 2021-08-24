@@ -38,6 +38,10 @@ ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
 
 DEMO_PAGE_INTRO_HTML = """ """
 
+OTREE_PRODUCTION = True
+
+DEBUG = False
+
 SECRET_KEY = '4399864929687'
 
 # if an app is included in SESSION_CONFIGS, you don't need to list it here
