@@ -180,10 +180,21 @@ def live_method(player: Player, data):
             if temp_sum != temp.value:
                 errors[0]=False
                 errors[i]=True
-                print('sums dont match')
+                print('row sums dont match')
                 print(temp_sum)
                 print(temp.value)
-                
+
+        for i in range(1,player.num_of_columns+1):
+            temp_sum = 0
+            for j in range(1,player.num_of_rows):
+                temp = get_data_input(player, j, i)
+                temp_sum = temp_sum + temp.value
+            temp = get_data_input(player, player.num_of_rows, i)
+            if temp_sum != temp.value:
+                errors[0]=False
+                errors[player.num_of_rows+1]=True
+                print('column sums dont match')
+
     error_message(player, errors[1])         
     print(errors)
     print('end of data')

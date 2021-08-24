@@ -161,10 +161,12 @@ Please complete practice task
     }
     {% for i in rows %}
     if (data[{{i}}]===true){
-    	errors.innerHTML += '<div class="alert alert-danger" role="alert"> Error Detetected! Check line {{i}} </div>'
+    	errors.innerHTML += '<div class="alert alert-danger" role="alert"> Error Detetected! Check line {{i}} </div>';
     }
     {% endfor %}
-
+    if (data[data.length-1]===true){
+      errors.innerHTML += '<div class="alert alert-danger" role="alert"> Error Detetected! Check column sums </div>';
+    }
     // your code goes here
 }
 
