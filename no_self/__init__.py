@@ -53,10 +53,32 @@ class Constants(BaseConstants):
     wages[5] = [5.19, 7.10, 8.35, 9.25, 9.96, 10.41]
 
     # pages:
-    prohibited_numbers = [13,19,27,39]
-    number_of_pages = 40
+    number_of_pages = 21
+
     row_numbers = [i for i in range(1,number_of_pages+1)]
-    column_numbers = 3
+    row_numbers[0] = 8
+    row_numbers[1] = 8
+    row_numbers[2] = 13
+    row_numbers[3] = 7
+    row_numbers[4] = 8
+    row_numbers[5] = 5
+    row_numbers[6] = 8
+    row_numbers[7] = 6
+    row_numbers[8] = 7
+    row_numbers[9] = 6
+    row_numbers[10] = 6
+    row_numbers[11] = 5
+    row_numbers[12] = 3
+    row_numbers[13] = 4
+    row_numbers[14] = 5
+    row_numbers[15] = 3
+    row_numbers[16] = 9
+    row_numbers[17] = 4
+    row_numbers[18] = 4
+    row_numbers[19] = 4
+    row_numbers[20] = 9
+
+    column_numbers = 12
 
 
 
@@ -105,7 +127,6 @@ def set_final_contract(player: Player):
 
 
 # methods for data input class
-
 def create_data_inputs(player: Player, n,m, page_num):
     for i in range(1,n+1):
         for j in range(1,m+1):
@@ -119,8 +140,8 @@ def custom_export(players):
     yield ['value', 'row','column', 'page_number']
     for p in players:
         #pp = p.participant
-        for i in range(1,10):
-            for j in range (1,10):
+        for i in range(1,9):
+            for j in range (1,13):
                 temp = DataItem.filter(player=p, row = i, column = j)
                 for t in temp:
                     yield [t.value, t.row, t.column, t.budget_number]
@@ -132,7 +153,7 @@ def error_message(player: Player, value):
 
 def live_method(player: Player, data):
     #print(data)
-    errors = [False for i in range(0,player.num_of_rows+1)]
+    errors = [False for i in range(0,player.num_of_rows+2)]
     if data['submitted']==0:
         errors[0]=False
         print('no data submitted')
@@ -148,12 +169,12 @@ def live_method(player: Player, data):
                 #print(temp.value)
 
             temp_sum = 0
-            for j in range(1,player.num_of_columns):
+            for j in range(9,player.num_of_columns):
                 temp = get_data_input(player, i, j)
                 temp_sum = temp_sum + temp.value
-                if temp.value == 0:
-                    errors[0]=False
-                    errors[i]=True
+#                if temp.value == 0:
+#                    errors[0]=False
+#                    errors[i]=True
 
             temp = get_data_input(player, i, player.num_of_columns)
             if temp_sum != temp.value:
@@ -162,7 +183,7 @@ def live_method(player: Player, data):
                 print('sums dont match')
                 print(temp_sum)
                 print(temp.value)
-
+                
     error_message(player, errors[1])         
     print(errors)
     print('end of data')
@@ -195,6 +216,8 @@ class WelcomePage(Page):
         player.num_of_columns = Constants.column_numbers
         create_data_inputs(player, Constants.row_numbers[i], Constants.column_numbers, i)
 
+
+
 class PracticeTask(Page):
     import random
     live_method=live_method
@@ -202,8 +225,8 @@ class PracticeTask(Page):
     def vars_for_template(player: Player): 
         return dict(
         image_path='ql_experiment/{}.jpg'.format(player.page_number),
-        rows = range(1,8+1),#player.num_of_rows+1),
-        columns = range(1,12+1),#player.num_of_columns+1)
+        rows = range(1,player.num_of_rows+1),
+        columns = range(1,player.num_of_columns+1)
     )
 
    
