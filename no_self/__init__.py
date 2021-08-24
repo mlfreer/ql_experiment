@@ -181,15 +181,15 @@ class WelcomePage(Page):
 
     @staticmethod
     def before_next_page(player: Player,timeout_happened):
-        i=random.randint(3,40)
-        flag=True
-        while flag:
-            flag=False
-            for j in Constants.prohibited_numbers:
-                if i==j:
-                    flag=True
-            if flag:
-                i=random.randint(3,Constants.number_of_pages)
+        i=random.randint(1,21)
+#        flag=True
+#        while flag:
+#            flag=False
+#            for j in Constants.prohibited_numbers:
+#                if i==j:
+#                    flag=True
+#            if flag:
+#                i=random.randint(3,Constants.number_of_pages)
         player.page_number = i
         player.num_of_rows = Constants.row_numbers[i-1]
         player.num_of_columns = Constants.column_numbers
@@ -201,7 +201,7 @@ class PracticeTask(Page):
     @staticmethod
     def vars_for_template(player: Player): 
         return dict(
-        image_path='ql_experiment/{}.png'.format(player.page_number),
+        image_path='ql_experiment/{}.jpg'.format(player.page_number),
         rows = range(1,player.num_of_rows+1),
         columns = range(1,player.num_of_columns+1)
     )
