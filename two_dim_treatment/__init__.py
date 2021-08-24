@@ -35,14 +35,9 @@ class Constants(BaseConstants):
     num_tasks = 6
 
     # number of budgets:
-    num_budgets = 15
+    num_budgets = 6
 
     # defining the budgets:
-    #wages = {}
-    #wages[1,1] = 4.02
-    #wages[1,2] = 6.51
-    #wages[1,3] = 8.09
-
     wages = [[0 for x in range(0,6)]  for x in range(0,15)]
     wages[0] = [4.02, 6.51, 8.09, 9.35, 10.34, 11.00]
     wages[1] = [5.51, 7.26, 8.56, 9.39, 9.94, 10.33]
