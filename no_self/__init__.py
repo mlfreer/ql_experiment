@@ -117,6 +117,7 @@ class DataItem(ExtraModel):
 
 # Methods:
 def set_task(player: Player):
+	import random
 	i=random.randint(1,21)
 #        flag=True
 #        while flag:
