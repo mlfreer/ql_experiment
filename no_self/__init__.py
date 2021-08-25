@@ -138,7 +138,7 @@ def set_task(player: Player):
 #			set_final_contract(p)
 
 def set_final_contract(player: Player):
-	player.paying_round = random.randint(Constants.num_training_rounds,Constants.num_training_rounds+Constants.number_of_budgets)
+	player.paying_round = random.randint(Constants.num_training_rounds,Constants.num_training_rounds+Constants.number_of_budgets-1)
 	p = player.in_round(player.paying_round)
 	player.final_task = p.choice
 	player.final_wage = Constants.wages[player.paying_round-2+Constants.num_training_rounds][p.choice-1]
@@ -281,7 +281,7 @@ class ContractDecision(Page):
 #   participant.input_task = [0 for i in range(9)]
 	
 	def is_displayed(player):
-		if (player.round_number>=Constants.num_training_rounds) and (player.round_number<=Constants.num_training_rounds + Constants.number_of_budgets):
+		if (player.round_number>=Constants.num_training_rounds) and (player.round_number<=Constants.num_training_rounds + Constants.number_of_budgets-1):
 			return True
 		else:
 			return False
