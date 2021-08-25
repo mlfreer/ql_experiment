@@ -326,7 +326,10 @@ class Results(Page):
 				'tasks': player.final_task
 			}
 
+class FinalResults(Page):
+	@staticmethod
+	def is_displayed(player: Player):
+		return player.subsession.round_number == Constants.num_rounds
 
 
-
-page_sequence = [WelcomePage, TaskGenerator, PracticeTask, ContractDecision, PreResults, Results]
+page_sequence = [WelcomePage, TaskGenerator, PracticeTask, ContractDecision, PreResults, Results, FinalResults]
