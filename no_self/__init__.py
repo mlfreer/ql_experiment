@@ -19,16 +19,16 @@ This is the code for two dimensional treatment of the qlt experiment, where subj
 class Constants(BaseConstants):
 	name_in_url = 'two_dim_treatment'
 	players_per_group = None
-	num_rounds = 4
+	num_rounds = 20
 
 	# number of the decision making problems
-	num_decision_rounds = 2
+	num_decision_rounds = 1
 	# number of training periods
 	num_training_rounds = 1
 	# max number of the working rounds
 	num_working_hours = 0
 	# number of budgets
-	number_of_budgets=3
+	number_of_budgets=1
 
 	
 	# maximum number of tasks:
@@ -133,15 +133,18 @@ def set_task(player: Player):
 	create_data_inputs(player, player.num_of_rows, player.num_of_columns, i)
 
 
-def set_payoffs(group: Group):
-		for p in group.get_players():
-			p.set_final_contract()
+#def set_payoffs(group: Group):
+#		for p in group.get_players():
+#			set_final_contract(p)
 
 def set_final_contract(player: Player):
-	player.paying_round = random.randint(1,Constants.num_rounds)
+	player.paying_round = random.randint(Constants.num_training_rounds,Constants.num_training_rounds+Constants.number_of_budgets)
 	p = player.in_round(player.paying_round)
 	player.final_task = p.choice
-	player.final_wage = Constants.wages[player.paying_round-1][p.choice-1]
+	player.final_wage = Constants.wages[player.paying_round-2+Constants.num_training_rounds][p.choice-1]
+	for p in player.in_rounds(1,Constants.num_rounds):
+		p.final_task = player.final_task
+		p.final_wage = player.final_wage
 
 
 # methods for data input class
@@ -155,7 +158,7 @@ def get_data_input(player: Player, i, j):
 
 
 def custom_export(players):
-	yield ['value', 'row','column', 'page_number']
+	yield ['value', 'row', 'column', 'page_number']
 	for p in players:
 		#pp = p.participant
 		for i in range(1,9):
@@ -255,7 +258,7 @@ class PracticeTask(Page):
 			return True
 		else:
 			# once done with the practice, make sure there theresults are shown appropriately
-			if player.round_number>= Constants.num_training_rounds + Constants.number_of_budgets and player.round_number<= Constants.num_training_rounds + Constants.number_of_budgets + player.final_task:
+			if player.round_number> Constants.num_training_rounds + Constants.number_of_budgets and player.round_number<= Constants.num_training_rounds + Constants.number_of_budgets + player.final_task:
 				return True
 			else:
 			# otherwise do not show.
@@ -270,11 +273,18 @@ class PracticeTask(Page):
 		columns = range(1,player.num_of_columns+1)
 	)
 
+
    
 class ContractDecision(Page):
 	form_model = 'player'
 	form_fields = ['choice']
 #   participant.input_task = [0 for i in range(9)]
+	
+	def is_displayed(player):
+		if (player.round_number>=Constants.num_training_rounds) and (player.round_number<=Constants.num_training_rounds + Constants.number_of_budgets):
+			return True
+		else:
+			return False
 	
 	@staticmethod
 	def vars_for_template(player: Player):
@@ -298,16 +308,16 @@ class ContractDecision(Page):
 class PreResults(Page):
 	@staticmethod
 	def is_displayed(player: Player):
-		return player.subsession.round_number == (Constants.num_decision_rounds+Constants.num_training_rounds)
+		return player.subsession.round_number == (Constants.number_of_budgets+Constants.num_training_rounds)
 	@staticmethod
-	def before_next_page(player: Player):
-		if player.subsession.round_number == (Constants.num_decision_rounds+Constants.num_training_rounds):
-			player.set_final_contract()
+	def before_next_page(player: Player, timeout_happened):
+		if player.subsession.round_number == (Constants.number_of_budgets+Constants.num_training_rounds):
+			set_final_contract(player)
 
 class Results(Page):
 	@staticmethod
 	def is_displayed(player: Player):
-		return player.subsession.round_number == (Constants.num_decision_rounds+Constants.num_training_rounds)
+		return player.subsession.round_number == (Constants.number_of_budgets+Constants.num_training_rounds)
 	@staticmethod
 	def vars_for_template(player: Player):
 		return {
