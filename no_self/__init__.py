@@ -22,13 +22,13 @@ class Constants(BaseConstants):
 	num_rounds = 20
 
 	# number of the decision making problems
-	num_decision_rounds = 1
+	num_decision_rounds = 5
 	# number of training periods
 	num_training_rounds = 1
 	# max number of the working rounds
 	num_working_hours = 0
 	# number of budgets
-	number_of_budgets=1
+	number_of_budgets= 5
 
 	
 	# maximum number of tasks:
