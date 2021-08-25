@@ -19,7 +19,7 @@ This is the code for two dimensional treatment of the qlt experiment, where subj
 class Constants(BaseConstants):
 	name_in_url = 'two_dim_treatment'
 	players_per_group = None
-	num_rounds = 2
+	num_rounds = 4
 
 	# number of the decision making problems
 	num_decision_rounds = 2
@@ -221,6 +221,8 @@ def live_method(player: Player, data):
 		}
 
 
+
+
 #--------------------------
 # starting the pages part:
 #--------------------------
@@ -243,9 +245,23 @@ class TaskGenerator(WaitPage):
 #		set_task(player)
 
 
+# Page responsible for the data input task
 class PracticeTask(Page):
 	import random
 	live_method=live_method
+	def is_displayed(player):
+		# for the training rounds show the practice tasks
+		if (player.round_number<=Constants.num_training_rounds):
+			return True
+		else:
+			# once done with the practice, make sure there theresults are shown appropriately
+			if player.round_number>= Constants.num_training_rounds + Constants.number_of_budgets and player.round_number<= Constants.num_training_rounds + Constants.number_of_budgets + player.final_task:
+				return True
+			else:
+			# otherwise do not show.
+				return False
+
+
 	@staticmethod
 	def vars_for_template(player: Player): 
 		return dict(
