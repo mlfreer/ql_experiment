@@ -18,7 +18,7 @@ This is the code for two dimensional treatment of the qlt experiment, where subj
 
 class Constants(BaseConstants):
 	name_in_url = 'two_dim_treatment'
-	players_per_group = 1
+	players_per_group = None
 	num_rounds = 2
 
 	# number of the decision making problems
@@ -113,7 +113,9 @@ class DataItem(ExtraModel):
 	value = models.IntegerField(min=0,default=0)
 
 
-@staticmethod
+
+
+# Methods:
 def set_task(player: Player):
 	i=random.randint(1,21)
 #        flag=True
@@ -127,10 +129,9 @@ def set_task(player: Player):
 	player.page_number = i
 	player.num_of_rows = Constants.row_numbers[i-1]
 	player.num_of_columns = Constants.column_numbers
-	create_data_inputs(player, Constants.row_numbers[i-1], Constants.column_numbers, i)
+	create_data_inputs(player, player.num_of_rows, player.num_of_columns, i)
 
 
-# Methods:
 def set_payoffs(group: Group):
 		for p in group.get_players():
 			p.set_final_contract()
@@ -233,10 +234,12 @@ class WelcomePage(Page):
 
 # waitpage to generate a task for the player:
 class TaskGenerator(WaitPage):
-#	wait_for_all_groups = False
 	def after_all_players_arrive(group: Group):
 		for p in group.get_players():
-			p.set_task()
+			set_task(p)
+#	@staticmethod
+#	def before_next_page(player: Player, timeout_happened):
+#		set_task(player)
 
 
 class PracticeTask(Page):
@@ -299,4 +302,4 @@ class Results(Page):
 
 
 
-page_sequence = [WelcomePage, PracticeTask, ContractDecision, PreResults, Results]
+page_sequence = [WelcomePage, TaskGenerator, PracticeTask, ContractDecision, PreResults, Results]
