@@ -12,6 +12,7 @@ SESSION_CONFIGS = [
          'display_name': 'Nonlinear wage experiment',
          'num_demo_participants': 1,
          'app_sequence': ['no_self'],
+         'use_secure_urls': False,
      },
 ]
 
