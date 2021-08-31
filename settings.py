@@ -12,7 +12,6 @@ SESSION_CONFIGS = [
          'display_name': 'Nonlinear wage experiment',
          'num_demo_participants': 1,
          'app_sequence': ['no_self'],
-         'use_secure_urls': False,
      },
 ]
 
@@ -30,7 +29,7 @@ ROOMS = [
         name='TAMULAB',
         display_name='TAMU ECON LAB',
         participant_label_file='_rooms/TAMULAB.txt',
-        use_secure_urls=True
+        use_secure_urls=False
     ),
 ]
 
