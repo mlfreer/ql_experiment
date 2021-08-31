@@ -19,16 +19,16 @@ This is the code for two dimensional treatment of the qlt experiment, where subj
 class Constants(BaseConstants):
 	name_in_url = 'two_dim_treatment'
 	players_per_group = None
-	num_rounds = 20
+	num_rounds = 30
 
 	# number of the decision making problems
-	num_decision_rounds = 5
+	num_decision_rounds = 15
 	# number of training periods
 	num_training_rounds = 1
 	# max number of the working rounds
 	num_working_hours = 0
 	# number of budgets
-	number_of_budgets= 5
+	number_of_budgets= 15
 
 	
 	# maximum number of tasks:
@@ -51,6 +51,15 @@ class Constants(BaseConstants):
 	wages[3] = [4.01, 6.51, 8.15, 9.37, 10.26, 10.93]
 	wages[4] = [5.02, 7.01, 8.40, 9.40, 10.18, 10.78]
 	wages[5] = [5.19, 7.10, 8.35, 9.25, 9.96, 10.41]
+	wages[6] = [4.30, 6.65, 8.28, 9.28, 9.91, 10.39]
+	wages[7] = [4.56, 6.78, 8.47, 9.57, 10.29, 10.75]
+	wages[8] = [5.61, 7.30, 8.42, 9.20, 9.72, 10.06]
+	wages[9] = [4.39, 6.70, 8.09, 9.13, 9.90, 10.47]
+	wages[10] = [4.88, 6.94, 8.38, 9.30, 9.88, 10.24]
+	wages[11] = [4.28, 6.64, 8.29, 9.48, 10.32, 10.92]
+	wages[12] = [4.24, 6.62, 8.23, 9.46, 10.39, 10.95]
+	wages[13] = [5.49, 7.24, 8.35, 9.08, 9.52, 9.81]
+	wages[14] = [4.11, 6.56, 8.05, 9.24, 10.05, 10.62]
 
 	# pages:
 	number_of_pages = 21
