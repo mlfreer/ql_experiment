@@ -305,7 +305,7 @@ class ContractDecision(Page):
 		w5 = Constants.wages[i-1][4]
 		w6 = Constants.wages[i-1][5]
 		return {
-				'budget_number': i-1
+				'budget_number': i,
 				'w1': w1,
 				'w2': w2,
 				'w3': w3,
