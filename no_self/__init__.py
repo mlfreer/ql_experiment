@@ -297,7 +297,7 @@ class ContractDecision(Page):
 	
 	@staticmethod
 	def vars_for_template(player: Player):
-		i = player.subsession.round_number
+		i = player.subsession.round_number-Constants.num_training_rounds+1
 		w1 = Constants.wages[i-1][0]
 		w2 = Constants.wages[i-1][1]
 		w3 = Constants.wages[i-1][2]
@@ -305,6 +305,7 @@ class ContractDecision(Page):
 		w5 = Constants.wages[i-1][4]
 		w6 = Constants.wages[i-1][5]
 		return {
+				'budget_number': i-1
 				'w1': w1,
 				'w2': w2,
 				'w3': w3,
