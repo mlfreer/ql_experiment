@@ -212,9 +212,9 @@ def live_method(player: Player, data):
 			for j in range(9,player.num_of_columns):
 				temp = get_data_input(player, i, j)
 				temp_sum = temp_sum + temp.value
-#                if temp.value == 0:
-#                    errors[0]=False
-#                    errors[i]=True
+                if temp.value == 0:
+                    errors[0]=False
+                    errors[i]=True
 
 			temp = get_data_input(player, i, player.num_of_columns)
 			if temp_sum != temp.value:
