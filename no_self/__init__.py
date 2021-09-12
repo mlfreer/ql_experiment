@@ -149,13 +149,14 @@ def set_final_contract(player: Player):
 	p = player.in_round(player.paying_round)
 	player.final_task = p.choice
 	player.final_wage = Constants.wages[player.paying_round-2+Constants.num_training_rounds][p.choice-1]
+	
 	# making sure data is transferred along all periods:
 	for p in player.in_rounds(1,Constants.num_rounds):
 		p.final_task = player.final_task
 		p.final_wage = player.final_wage
-		#p.payoff = player.final_wage
 		p.paying_round = player.paying_round
 
+	# making sure payoff variable is defined correctly:
 	p = player.in_round(Constants.num_rounds)
 	p.payoff = player.final_wage
 
