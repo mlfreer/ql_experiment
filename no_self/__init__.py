@@ -209,7 +209,7 @@ def live_method(player: Player, data):
 				#print(temp.value)
 
 			temp_sum = 0
-			for j in range(9,player.num_of_columns):
+			for j in range(10,player.num_of_columns):
 				temp = get_data_input(player, i, j)
 				temp_sum = temp_sum + temp.value
 				if temp.value == 0:
