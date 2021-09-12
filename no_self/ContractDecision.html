@@ -2,7 +2,7 @@
 {% load otree static %}
 
 {% block title %}
-    Please take your decision (Decision task is {{budget_number}} out of 15)
+    Please take your decision (Decision task is {{budget_number}} out of {{Constants.number_of_budgets}})
 {% endblock %}
 
 
@@ -13,38 +13,62 @@
 <table class="table">
 	<tr>
 		<td> 1 </td>
-		<td> You will be paid ${{ w1 }} for 1 tasks </td>
+		<td> You will be paid <b> ${{ w1 }} </b> for <b> 1 task </b> </td>
 		<td> <input type="radio" name="choice" value="1" required> </td>
 	</tr>
 
 	<tr>
 		<td> 2 </td>
-		<td> You will be paid ${{ w2 }} for 2 tasks </td>
+		<td> You will be paid <b>${{ w2 }}</b> for <b>2 tasks</b> </td>
 		<td> <input type="radio" name="choice" value="2" required> </td>
 	</tr>
 
 
 	<tr>
 		<td> 3 </td>
-		<td> You will be paid ${{ w3 }} for 3 tasks </td>
+		<td> You will be paid <b>${{ w3 }}</b> for <b>3 tasks</b> </td>
 		<td> <input type="radio" name="choice" value="3" required> </td>
 	</tr>
 
 	<tr>
 		<td> 4 </td>
-		<td> You will be paid ${{ w4 }} for 4 tasks </td>
+		<td> You will be paid <b>${{ w4 }}</b> for <b>4 tasks</b> </td>
 		<td> <input type="radio" name="choice" value="4" required> </td>
 	</tr>
 
 	<tr>
 		<td> 5 </td>
-		<td> You will be paid ${{ w5 }} for 5 tasks </td>
+		<td> You will be paid <b>${{ w5 }}</b> for <b>5 tasks</b> </td>
 		<td> <input type="radio" name="choice" value="5" required> </td>
 	</tr>
 
 	<tr>
 		<td> 6 </td>
 		<td> You will be paid ${{ w6 }} for 6 tasks </td>
+		<td> <input type="radio" name="choice" value="6" required> </td>
+	</tr>
+
+	<tr>
+		<td> 7 </td>
+		<td> You will be paid ${{ w7 }} for 7 tasks </td>
+		<td> <input type="radio" name="choice" value="6" required> </td>
+	</tr>
+
+	<tr>
+		<td> 8 </td>
+		<td> You will be paid ${{ w8 }} for 8 tasks </td>
+		<td> <input type="radio" name="choice" value="6" required> </td>
+	</tr>
+
+	<tr>
+		<td> 9 </td>
+		<td> You will be paid ${{ w9 }} for 9 tasks </td>
+		<td> <input type="radio" name="choice" value="6" required> </td>
+	</tr>
+
+	<tr>
+		<td> 10 </td>
+		<td> You will be paid ${{ w10 }} for 10 tasks </td>
 		<td> <input type="radio" name="choice" value="6" required> </td>
 	</tr>
 

@@ -19,50 +19,48 @@ This is the code for two dimensional treatment of the qlt experiment, where subj
 class Constants(BaseConstants):
 	name_in_url = 'two_dim_treatment'
 	players_per_group = None
-	num_rounds = 30
+	num_rounds = 35
+
+	# maximum number of tasks:
+	num_tasks = 10
 
 	# number of the decision making problems
-	num_decision_rounds = 15
+	num_decision_rounds = 20
+	# number of budgets
+	number_of_budgets= 20
 	# number of training periods
 	num_training_rounds = 1
-	# max number of the working rounds
-	num_working_hours = 0
-	# number of budgets
-	number_of_budgets= 15
-
 	
-	# maximum number of tasks:
-	num_tasks = 6
 
 	# number of budgets:
-	num_budgets = 15
+	num_budgets = 20
 
-	# number of pages
 	# defining the budgets:
-	#wages = {}
-	#wages[1,1] = 4.02
-	#wages[1,2] = 6.51
-	#wages[1,3] = 8.09
-
-	wages = [[0 for x in range(0,6)]  for x in range(0,15)]
-	wages[0] = [4.02, 6.51, 8.09, 9.35, 10.34, 11.00]
-	wages[1] = [5.51, 7.26, 8.56, 9.39, 9.94, 10.33]
-	wages[2] = [5.76, 7.38, 8.37, 9.15, 9.71, 10.13]
-	wages[3] = [4.01, 6.51, 8.15, 9.37, 10.26, 10.93]
-	wages[4] = [5.02, 7.01, 8.40, 9.40, 10.18, 10.78]
-	wages[5] = [5.19, 7.10, 8.35, 9.25, 9.96, 10.41]
-	wages[6] = [4.30, 6.65, 8.28, 9.28, 9.91, 10.39]
-	wages[7] = [4.56, 6.78, 8.47, 9.57, 10.29, 10.75]
-	wages[8] = [5.61, 7.30, 8.42, 9.20, 9.72, 10.06]
-	wages[9] = [4.39, 6.70, 8.09, 9.13, 9.90, 10.47]
-	wages[10] = [4.88, 6.94, 8.38, 9.30, 9.88, 10.24]
-	wages[11] = [4.28, 6.64, 8.29, 9.48, 10.32, 10.92]
-	wages[12] = [4.24, 6.62, 8.23, 9.46, 10.39, 10.95]
-	wages[13] = [5.49, 7.24, 8.35, 9.08, 9.52, 9.81]
-	wages[14] = [4.11, 6.56, 8.05, 9.24, 10.05, 10.62]
+	# use exact number of num_tasks
+	wages = [[0 for x in range(0, 10)]  for x in range(0, number_of_budgets)]
+	wages[0] = [4.02, 6.51, 8.09, 9.35, 10.34, 11.00, 8.09, 9.35, 10.34, 11.00]
+	wages[1] = [5.51, 7.26, 8.56, 9.39, 9.94, 10.33, 8.09, 9.35, 10.34, 11.00]
+	wages[2] = [5.76, 7.38, 8.37, 9.15, 9.71, 10.13, 8.09, 9.35, 10.34, 11.00]
+	wages[3] = [4.01, 6.51, 8.15, 9.37, 10.26, 10.93, 8.09, 9.35, 10.34, 11.00]
+	wages[4] = [5.02, 7.01, 8.40, 9.40, 10.18, 10.78, 8.09, 9.35, 10.34, 11.00]
+	wages[5] = [5.19, 7.10, 8.35, 9.25, 9.96, 10.41, 8.09, 9.35, 10.34, 11.00]
+	wages[6] = [4.30, 6.65, 8.28, 9.28, 9.91, 10.39, 8.09, 9.35, 10.34, 11.00]
+	wages[7] = [4.56, 6.78, 8.47, 9.57, 10.29, 10.75, 8.09, 9.35, 10.34, 11.00]
+	wages[8] = [5.61, 7.30, 8.42, 9.20, 9.72, 10.06, 8.09, 9.35, 10.34, 11.00]
+	wages[9] = [4.39, 6.70, 8.09, 9.13, 9.90, 10.47, 8.09, 9.35, 10.34, 11.00]
+	wages[10] = [4.88, 6.94, 8.38, 9.30, 9.88, 10.24, 8.09, 9.35, 10.34, 11.00]
+	wages[11] = [4.28, 6.64, 8.29, 9.48, 10.32, 10.92, 8.09, 9.35, 10.34, 11.00]
+	wages[12] = [4.24, 6.62, 8.23, 9.46, 10.39, 10.95, 8.09, 9.35, 10.34, 11.00]
+	wages[13] = [5.49, 7.24, 8.35, 9.08, 9.52, 9.81, 8.09, 9.35, 10.34, 11.00]
+	wages[14] = [4.11, 6.56, 8.05, 9.24, 10.05, 10.62, 8.09, 9.35, 10.34, 11.00]
+	wages[15] = [4.11, 6.56, 8.05, 9.24, 10.05, 10.62, 8.09, 9.35, 10.34, 11.00]
+	wages[16] = [4.11, 6.56, 8.05, 9.24, 10.05, 10.62, 8.09, 9.35, 10.34, 11.00]
+	wages[17] = [4.11, 6.56, 8.05, 9.24, 10.05, 10.62, 8.09, 9.35, 10.34, 11.00]
+	wages[18] = [4.11, 6.56, 8.05, 9.24, 10.05, 10.62, 8.09, 9.35, 10.34, 11.00]
+	wages[19] = [4.11, 6.56, 8.05, 9.24, 10.05, 10.62, 8.09, 9.35, 10.34, 11.00]
 
 	# pages:
-	number_of_pages = 21
+	number_of_pages = 35
 
 	row_numbers = [i for i in range(1,number_of_pages+1)]
 	row_numbers[0] = 8
@@ -304,6 +302,10 @@ class ContractDecision(Page):
 		w4 = Constants.wages[i-1][3]
 		w5 = Constants.wages[i-1][4]
 		w6 = Constants.wages[i-1][5]
+		w7 = Constants.wages[i-1][6]
+		w8 = Constants.wages[i-1][7]
+		w9 = Constants.wages[i-1][8]
+		w10 = Constants.wages[i-1][9]
 		return {
 				'budget_number': i,
 				'w1': w1,
@@ -311,7 +313,11 @@ class ContractDecision(Page):
 				'w3': w3,
 				'w4': w4,
 				'w5': w5,
-				'w6': w6
+				'w6': w6,
+				'w7': w7,
+				'w8': w8,
+				'w9': w9,
+				'w10': w10
 			}
 
 
