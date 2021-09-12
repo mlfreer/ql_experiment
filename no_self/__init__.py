@@ -15,7 +15,9 @@ doc = """
 This is the code for two dimensional treatment of the qlt experiment, where subjects make decisions on the non-linear contracts.
 """
 
-
+#---------------------------------------------------
+# CONSTANTS
+#---------------------------------------------------
 class Constants(BaseConstants):
 	name_in_url = 'two_dim_treatment'
 	players_per_group = None
@@ -88,8 +90,9 @@ class Constants(BaseConstants):
 	column_numbers = 12
 
 
-
+#---------------------------------------------------
 # MODELS:
+#---------------------------------------------------
 class Subsession(BaseSubsession):
 	pass
 
@@ -122,9 +125,11 @@ class DataItem(ExtraModel):
 
 
 
-#-----------------------------------
-# Methods:
-#-----------------------------------
+
+
+#---------------------------------------------------
+# METHODS:
+#---------------------------------------------------
 
 # Methods for players
 def set_task(player: Player):
@@ -149,7 +154,7 @@ def set_final_contract(player: Player):
 	p = player.in_round(player.paying_round)
 	player.final_task = p.choice
 	player.final_wage = Constants.wages[player.paying_round-2+Constants.num_training_rounds][p.choice-1]
-	
+
 	# making sure data is transferred along all periods:
 	for p in player.in_rounds(1,Constants.num_rounds):
 		p.final_task = player.final_task
@@ -253,13 +258,21 @@ class WelcomePage(Page):
 
 
 # waitpage to generate a task for the player:
-class TaskGenerator(WaitPage):
-	def after_all_players_arrive(group: Group):
-		for p in group.get_players():
-			set_task(p)
-#	@staticmethod
-#	def before_next_page(player: Player, timeout_happened):
-#		set_task(player)
+class TaskGenerator(Page):
+	def is_displayed(player):
+		# for the training rounds show the practice tasks
+		if (player.round_number<=Constants.num_training_rounds):
+			return True
+		else:
+			# once done with the practice, make sure there theresults are shown appropriately
+			if player.round_number> Constants.num_training_rounds + Constants.number_of_budgets and player.round_number<= Constants.num_training_rounds + Constants.number_of_budgets + player.final_task:
+				return True
+			else:
+			# otherwise do not show.
+				return False
+	@staticmethod
+	def before_next_page(player: Player, timeout_happened):
+		set_task(player)
 
 
 # Page responsible for the data input task
@@ -288,7 +301,13 @@ class PracticeTask(Page):
 	)
 
 
-   
+class ContractInstructions(Page):
+	def is_displayed(player):
+		if (player.round_number==Constants.num_training_rounds):
+			return True
+		else:
+			return False
+
 class ContractDecision(Page):
 	form_model = 'player'
 	form_fields = ['choice']
@@ -355,4 +374,22 @@ class FinalResults(Page):
 		return player.subsession.round_number == Constants.num_rounds
 
 
-page_sequence = [WelcomePage, TaskGenerator, PracticeTask, ContractDecision, PreResults, Results, FinalResults]
+page_sequence = [
+				WelcomePage,
+				TaskGenerator,
+				PracticeTask,
+				ContractInstructions,
+				ContractDecision,
+				PreResults,
+				Results,
+				FinalResults
+				]
+
+
+
+
+
+
+
+
+

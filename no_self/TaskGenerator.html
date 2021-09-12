@@ -2,13 +2,23 @@
 {% load otree static %}
 
 {% block title %}
-    Please proceed to the next stage
+    Press "next" to proceed furhter
 {% endblock %}
 
 
 
 {% block content %}
-
+<div class="fit-right">
 {% next_button %} 
-
+</div>
 {% endblock %}
+
+
+<style>
+  .fit-right {
+  right: 0%;
+  margin: auto;
+  transform: translate(90%, 0%);
+}
+
+</style>
