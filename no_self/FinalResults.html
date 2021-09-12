@@ -6,5 +6,26 @@ Thank you the experiment is finished!
 {% endblock %}
 
 {% block content %}
+<font size="4">
+    <table style="width:90%" font=5>
+        <table style="width:90%" font=5>
+        <tr style="border-bottom:1px solid black">
+            <td> Your label is (please record it for payment) </td>
+            <td> <b> {{participant.label}} </b></td>
+        </tr>
+        <tr>
+            <td> The round chosen for payment is  </td>
+            <td> <b> {{player.paying_round}} </b> </td>
+        </tr>
+        <tr  style="border-bottom:1px solid black">
+            <td> You have completed  </td>
+            <td> <b>{{player.final_task}} tasks</b> </td>
+        </tr>
+        <tr>
+            <td> In this round you have earned </td>
+            <td> <b>${{player.payoff}}</b> </td>
+        </tr>
+    </table>
 
+</font>
 {% endblock %}

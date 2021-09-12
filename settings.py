@@ -38,8 +38,8 @@ ROOMS = [
 LANGUAGE_CODE = 'en'
 
 # e.g. EUR, GBP, CNY, JPY
-REAL_WORLD_CURRENCY_CODE = 'USD'
-USE_POINTS = True
+REAL_WORLD_CURRENCY_CODE = ''
+USE_POINTS = False
 
 ADMIN_USERNAME = 'admin'
 # for security, best to set admin password in an environment variable
@@ -47,9 +47,8 @@ ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
 
 DEMO_PAGE_INTRO_HTML = """ """
 
-OTREE_PRODUCTION = True
-
-DEBUG = False
+#OTREE_PRODUCTION = True
+#DEBUG = False
 
 SECRET_KEY = '4399864929687'
 

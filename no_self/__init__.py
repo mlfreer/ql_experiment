@@ -122,7 +122,11 @@ class DataItem(ExtraModel):
 
 
 
+#-----------------------------------
 # Methods:
+#-----------------------------------
+
+# Methods for players
 def set_task(player: Player):
 	import random
 	i=random.randint(1,21)
@@ -140,18 +144,20 @@ def set_task(player: Player):
 	create_data_inputs(player, player.num_of_rows, player.num_of_columns, i)
 
 
-#def set_payoffs(group: Group):
-#		for p in group.get_players():
-#			set_final_contract(p)
-
 def set_final_contract(player: Player):
 	player.paying_round = random.randint(Constants.num_training_rounds,Constants.num_training_rounds+Constants.number_of_budgets-1)
 	p = player.in_round(player.paying_round)
 	player.final_task = p.choice
 	player.final_wage = Constants.wages[player.paying_round-2+Constants.num_training_rounds][p.choice-1]
+	# making sure data is transferred along all periods:
 	for p in player.in_rounds(1,Constants.num_rounds):
 		p.final_task = player.final_task
 		p.final_wage = player.final_wage
+		#p.payoff = player.final_wage
+		p.paying_round = player.paying_round
+
+	p = player.in_round(Constants.num_rounds)
+	p.payoff = player.final_wage
 
 
 # methods for data input class
@@ -233,9 +239,9 @@ def live_method(player: Player, data):
 
 
 
-#--------------------------
-# starting the pages part:
-#--------------------------
+#--------------------------------
+# PAGES:
+#--------------------------------
 class WelcomePage(Page):
 	@staticmethod   
 	def is_displayed(player: Player):
