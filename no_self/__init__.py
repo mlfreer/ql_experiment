@@ -82,7 +82,7 @@ class Constants(BaseConstants):
 	row_numbers[14] = 5
 	row_numbers[15] = 3
 	row_numbers[16] = 9
-	row_numbers[17] = 4
+	row_numbers[17] = 5
 	row_numbers[18] = 4
 	row_numbers[19] = 4
 	row_numbers[20] = 9
