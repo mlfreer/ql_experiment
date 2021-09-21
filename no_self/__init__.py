@@ -66,16 +66,16 @@ class Constants(BaseConstants):
 
 	row_numbers = [i for i in range(1,number_of_pages+1)]
 	row_numbers[0] = 8
-	row_numbers[1] = 8
+	row_numbers[1] = 9
 	row_numbers[2] = 13
 	row_numbers[3] = 7
 	row_numbers[4] = 8
 	row_numbers[5] = 5
 	row_numbers[6] = 8
-	row_numbers[7] = 6
+	row_numbers[7] = 4
 	row_numbers[8] = 7
 	row_numbers[9] = 6
-	row_numbers[10] = 6
+	row_numbers[10] = 9
 	row_numbers[11] = 5
 	row_numbers[12] = 3
 	row_numbers[13] = 4
