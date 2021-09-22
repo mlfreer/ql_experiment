@@ -236,7 +236,8 @@ def live_method(player: Player, data):
 				errors[player.num_of_rows+1]=True
 				print('column sums dont match')
 		print(mistakes)
-		if mistakes > 2:
+		print((player.num_of_rows+1)/2)
+		if mistakes > (player.num_of_rows+1)/2:
 			errors[0]=False
 
 	error_message(player, errors[1])         
