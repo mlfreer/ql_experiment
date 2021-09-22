@@ -193,6 +193,7 @@ def error_message(player: Player, value):
 
 def live_method(player: Player, data):
 	#print(data)
+	mistakes = 0 # error to count number of mistakes
 	errors = [False for i in range(0,player.num_of_rows+2)]
 	if data['submitted']==0:
 		errors[0]=False
@@ -213,12 +214,15 @@ def live_method(player: Player, data):
 				temp = get_data_input(player, i, j)
 				temp_sum = temp_sum + temp.value
 				if temp.value == 0:
-					errors[0]=False
+					#errors[0]=False
+					mistakes = mistakes+1 # adding one mistake
 					errors[i]=True
 
 			temp = get_data_input(player, i, player.num_of_columns)
 			if temp_sum != temp.value:
-				errors[0]=False
+				#errors[0]=False
+				mistakes = mistakes + 1 # adding one mistake
+
 				errors[i]=True
 				print('row sums dont match')
 				print(temp_sum)
@@ -231,9 +235,13 @@ def live_method(player: Player, data):
 				temp_sum = temp_sum + temp.value
 			temp = get_data_input(player, player.num_of_rows, i)
 			if temp_sum != temp.value:
-				errors[0]=False
+				#errors[0]=False
+				mistakes = mistakes + 1 # adding one mistake
 				errors[player.num_of_rows+1]=True
 				print('column sums dont match')
+		print(mistakes)
+		if mistakes > 2:
+			errors[0]=False
 
 	error_message(player, errors[1])         
 	print(errors)

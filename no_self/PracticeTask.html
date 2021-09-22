@@ -7,7 +7,7 @@ Please complete practice task
 
 {% block content %}
  
-<div class="split-top center-fit">
+<div class="split-top">
 	<img src="{% static image_path %}" height="50%"/>
 </div>
 
@@ -56,7 +56,6 @@ Please complete practice task
 </table></div>
 </div>
 
-{% endblock %}
 
 
 <style>
@@ -66,24 +65,23 @@ Please complete practice task
 }
 
 .split-top {
-  height: 50%;
-  width: 90%;
-  position: absolute;
-  z-index: 1;
-  top: 12%;
+  max-height: 20vh;
+  max-width: 80vw;
+  position:  absolute;
+  z-index:  1;
+  top: 15%;
   left: 10%;
-  overflow-x: hidden;
   background-color: none;
 }
 
 .split-bottom {
-  height: 38%;
-  width: 90%;
+  height: 30%;
+  width: auto;
   position: absolute;
   z-index: 1;
-  bottom: 0%;
-  left: 5%;
-  overflow-x: hidden;
+  bottom: 5%;
+  left: 15%;
+  right: 15%;
   background-color: none;
 }
 
@@ -119,6 +117,7 @@ Please complete practice task
 
 </style>
 
+{% endblock %}
 
 
 {% block scripts %}
