@@ -2,27 +2,110 @@
 {% load otree static %}
 
 {% block title %}
-    Thanks you for completing Part II
+    Please carefully read the instructions.
 {% endblock %}
 
 {% block content %}
 
 <font size="4">
 
+Thanks you for completing Part I of the experiment! We are now proceeding to the next stage of the experiment. Please remain calm and study the instructions. You will be able to proceed shortly after all participants would finish the Part I.
 
-Please wait patiently to be instructed about the next stage of the experiment.
-You will be given a printed copy of the instructions for Part III soon..
+<br><br>
+
+After this screen you will see the <b> randomly chosen contract</b> which you agreed to fulfill.
+In order to do so, please complete the <b>chosen number of tasks</b>.
+Once you fulfill the contract you will see the final screen with your payment information.
+<b>You  DO NOT NEED to wait for other participants.</b> 
+Please record you <b> label </b> and calmly proceed to collect your payment.
+
+
+
+<br><br><br>
+
+<p style="text-align:center;"><b> Please find the instructions for the task below: </b></p>
+
+
+In this part you would be ask to do some data entering task. You would be presented with the scanned version of the paper copy of the data book (Peruvian Census, 1876) and the entry field on the right side of the screen. picture below presents the screenshot of the actual screen you will face in this part of the experiment. If you do not see the submit button please scroll the screen down.
+
+<br><br>
+
+<img src="{{static 'instructions/decision.png' }}" alt="screenshot task"/>
+
+<br><br>
+
+The system has also some internal checks to make sure that the data is entered correctly. In a case you have made a typo, the system would alert you and ask to fix a typo. To help you to identify there the typo was, the system would highlight corresponding raw or column. Picture below illustrates the screen you would face in a case system has identified a typo.
+
+<br><br>
+
+<img src="{{static 'instructions/errors.png' }}" alt="screenshot task"/>
+
+<br><br>
+
+Unless most of the typos are fixed the system would not allow you to enter the data and proceed to the next screen. 
+Given that the task is rather complicated we do allow you to do some mistakes.
+In particular you are allowed for the number of mistakes equal to the number of lines divided by two.
+For example, if there are 4 lines, then you would be able to make 2 mistakes; if there are 8 lines you would be able to make 4 mistakes.
+However, to ensure the best possible data collection we would encourage you to take that task responsibly and input data as close to the original as possible.
+In order to check and fix potential mistakes please check the following <b>control sums (using calculator if necessary)</b>:
+
+<br>
+
+<ul>
+  <li>
+    Number in the bottom of every column is the sum of all the numbers above it.
+  </li>
+  <li>
+    In every row, sum of the numbers in columns 10 and 11 must be equal to the number in column 12 (last one).
+  </li>
+</ul>
+
+
+In addition to the guidelines above please feel free to employ several <b> hints </b>:
+<ul>
+    <li>
+        The <b> ... </b> must be replaced with <b> 0 </b>.
+    </li>
+    <li>
+        Given the font figure looking like <b> 0 </b> can be <b> 6 </b> or <b> 8 </b>.
+    </li>
+    <li>
+        Given the font figure looking like <b> 9 </b> may sometimes be <b> 8 </b>.
+    </li>
+    <li>
+        If number is unreadable (<b>ink-drops</b>), delegate it to the errors allowed and leave it <b>zero</b>
+    </li>
+</ul>
+
+<br><br>
+
+Once you have submitted the data that passes the internal checks the button to proceed will appear as illustrated on picture below. Pressing this button would finalize the submission and allow you to proceed to the next stage of the experiment.
+
+<br><br>
+
+<img src="{{static 'instructions/success.png' }}" alt="screenshot task"/>
+
+<br><br>
+
+<div style="text-align:center;">
+  <b> Thank You and Good Luck!
+</div> 
+
 
 </font>
 
 
-<style>
-  .fit-right {
-  right: 0%;
-  margin: auto;
-  transform: translate(90%, 0%);
-}
+<div style="text-align:center;">
+  <b> Thank You and Good Luck!
+</div> 
 
+</font>
+
+<style>
+img {
+  max-width: 100%;
+  height: auto;
+}
 </style>
     
 {% endblock %}

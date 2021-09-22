@@ -2,7 +2,7 @@
 {% load otree static %}
 
 {% block title %}
-    Thank you for completing Part I!
+    Please carefully read the instructions.
 {% endblock %}
 
 
@@ -10,10 +10,38 @@
 
 <font size="4">
 
+Thanks you for completing Part I of the experiment! We are now proceeding to the next stage of the experiment. Please remain calm and study the instructions. You will be able to proceed shrotly after all participants would finish the Part I.
 
-Please wait patiently to be instructed about the next stage of the experiment.
-You will be given a printed copy of the instructions for Part II soon..
+<br><br>
+
+In this part you would be presented with <b> 20 decision making problems</b>. 
+Each of them contains <b>10 alternatives</b>. 
+Each alternative is a contract, that is the amount of money you would receive for the given number of tasks. 
+The tasks are similar to those you have completed in the Part 1.
+ Hence, each menu would contain the payment you would receive if you decide to do <b>1,2,3,…,10 tasks</b>. However, you need to pick one of the contracts. Please take the choice carefully, because it would define the number of tasks and the compensation you would receive in the Part 3. Picture below presents the decision screen you would face.
+
+<br><br>
+
+<img src="{{static 'instructions/budget.png' }}" alt="screenshot task"/>
+
+<br><br>
+
+After taking all of these decisions, <b> one of 20 decision tasks </b> would be randomly (with equal probability) picked and your choice from this budget will be implemented in the Part 3. That is, you would have to finish the number of tasks corresponding the one you have chosen in this budget and the compensation would be equal to the compensation corresponding to the number of tasks you chosen within the budget.
 
 </font>
+
+
+<div style="text-align:center;">
+  <b> Thank You and Good Luck!
+</div> 
+
+</font>
+
+<style>
+img {
+  max-width: 100%;
+  height: auto;
+}
+</style>
 
 {% endblock %}
