@@ -62,30 +62,26 @@ class Constants(BaseConstants):
 	wages[19] = [3.88, 6.33, 8.75, 11.13, 12.84, 14.25, 15.57, 16.85, 17.84, 18.36]
 
 	# pages:
-	number_of_pages = 35
+	number_of_pages = 16
 
-	row_numbers = [i for i in range(1,number_of_pages+1)]
-	row_numbers[0] = 8
-	row_numbers[1] = 9
-	row_numbers[2] = 13
-	row_numbers[3] = 7
-	row_numbers[4] = 8
+	#row_numbers = [i for i in range(1,number_of_pages+1)]
+	row_numbers[0] = 9
+	row_numbers[1] = 4
+	row_numbers[2] = 5
+	row_numbers[3] = 9
+	row_numbers[4] = 3
 	row_numbers[5] = 5
-	row_numbers[6] = 8
-	row_numbers[7] = 4
-	row_numbers[8] = 7
-	row_numbers[9] = 6
-	row_numbers[10] = 9
-	row_numbers[11] = 5
-	row_numbers[12] = 3
-	row_numbers[13] = 4
-	row_numbers[14] = 5
-	row_numbers[15] = 3
-	row_numbers[16] = 9
-	row_numbers[17] = 5
-	row_numbers[18] = 4
-	row_numbers[19] = 4
-	row_numbers[20] = 9
+	row_numbers[6] = 3
+	row_numbers[7] = 6
+	row_numbers[8] = 4
+	row_numbers[9] = 9
+	row_numbers[10] = 5
+	row_numbers[11] = 8
+	row_numbers[12] = 4
+	row_numbers[13] = 6
+	row_numbers[14] = 7
+	row_numbers[15] = 7
+	
 
 	column_numbers = 12
 
