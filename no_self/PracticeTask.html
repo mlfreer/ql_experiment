@@ -7,9 +7,7 @@ Please complete practice task
 
 {% block content %}
  
-<div class="split-top">
-	<img src="{% static image_path %}" height="50%"/>
-</div>
+<img src="{% static image_path %}" class="split-top"/>
 
 
 <div class="split-bottom">
@@ -65,10 +63,10 @@ Please complete practice task
 }
 
 .split-top {
-  max-height: 20vh;
+  height: auto;
   max-width: 80vw;
   position:  absolute;
-  z-index:  1;
+  z-index:  2;
   top: 15%;
   left: 10%;
   background-color: none;

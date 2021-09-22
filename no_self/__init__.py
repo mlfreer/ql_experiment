@@ -64,7 +64,7 @@ class Constants(BaseConstants):
 	# pages:
 	number_of_pages = 16
 
-	#row_numbers = [i for i in range(1,number_of_pages+1)]
+	row_numbers = [i for i in range(number_of_pages)]
 	row_numbers[0] = 9
 	row_numbers[1] = 4
 	row_numbers[2] = 5
@@ -130,7 +130,7 @@ class DataItem(ExtraModel):
 # Methods for players
 def set_task(player: Player):
 	import random
-	i=random.randint(1,21)
+	i=random.randint(1,Constants.number_of_pages)
 #        flag=True
 #        while flag:
 #            flag=False
