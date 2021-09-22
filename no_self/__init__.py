@@ -260,6 +260,11 @@ class WelcomePage(Page):
 #	@staticmethod
 #	def before_next_page(player: Player,timeout_happened):
 
+class PracticeInstructions(Page):
+	@staticmethod   
+	def is_displayed(player: Player):
+		return player.subsession.round_number == 1
+
 
 # waitpage to generate a task for the player:
 class TaskGenerator(Page):
@@ -380,6 +385,7 @@ class FinalResults(Page):
 
 page_sequence = [
 				WelcomePage,
+				PracticeInstructions,
 				TaskGenerator,
 				PracticeTask,
 				ContractInstructions,
