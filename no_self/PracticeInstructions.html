@@ -74,6 +74,51 @@ Once you have submitted the data that passes the internal checks the button to p
 
 <br><br>
 
+Note that the complexity of tasks is heterogeneous, in both amount of data to be entered and the quality of the picture.
+You will be presented with randomly selected task on the next screen.
+Each of them contains from from 3 to 10 lines and 12 columns.
+Please find some examples of the pictures used for the tasks below.
+
+<table class="table">
+    <tr class="row">
+        <td class="column">
+        <img src="{{static 'ql_experiment/15.jpg' }}" alt="example task" style="width:100%"/>
+        </td>
+        <td class="column">
+        <img src="{{static 'ql_experiment/12.jpg' }}" alt="example task" style="width:100%"/>
+        </td>
+    </tr>
+
+    <tr class="row">
+    <td class="column">
+        <img src="{{static 'ql_experiment/14.jpg' }}" alt="example task" style="width:100%"/>
+    </td>
+    <td class="column">
+        <img src="{{static 'ql_experiment/16.jpg' }}" alt="example task" style="width:100%"/>
+    </td>
+    </tr>
+
+    <tr>
+        <br><br>
+    </tr>
+
+    <tr class="row">
+    <td class="column">
+        <img src="{{static 'ql_experiment/9.jpg' }}" alt="example task" style="width:100%"/>
+    </td>
+    <td class="column">
+        <img src="{{static 'ql_experiment/13.jpg' }}" alt="example task" style="width:100%"/>
+    </td>
+    </tr>
+</table>
+
+Please take into account that if you observe a picture with 9 lines and which is hard to read, it is likely among the most complicated tasks.
+On the other hand if you observe a picture with 3 lines and ideally printed numbers it is likely among the easiest tasks.
+There is enough tasks of all levels of complexity, so if you received a very easy or a very complicated task in the practice does not affect the chance of you receiving easy or complicated tasks further on.
+Finally, in this Part of the experiment <b>you would have to end until all participants in the room is finished to proceed further</b>.
+
+<br><br>
+
 <div style="text-align:center;">
   <b> Thank You and Good Luck!
 </div> 
@@ -84,6 +129,16 @@ Once you have submitted the data that passes the internal checks the button to p
 img {
   max-width: 100%;
   height: auto;
+}
+
+.column {
+  float: left;
+  width: 45%;
+  padding: 10px;
+}
+
+.row {
+  display: flex;
 }
 </style>
 
