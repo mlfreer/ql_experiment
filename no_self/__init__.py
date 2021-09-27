@@ -139,7 +139,12 @@ def set_task(player: Player):
 #                    flag=True
 #            if flag:
 #                i=random.randint(3,Constants.number_of_pages)
-	player.page_number = i
+	if player.subsession.round_number==1:
+		player.page_number = 15
+		i=15
+	else:
+		player.page_number = i
+
 	player.num_of_rows = Constants.row_numbers[i-1]
 	player.num_of_columns = Constants.column_numbers
 	create_data_inputs(player, player.num_of_rows, player.num_of_columns, i)
